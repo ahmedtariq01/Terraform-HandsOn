@@ -8,18 +8,28 @@ terraform {
   }
 }
 
-# local variable
-locals {
-  team = "Dev"
-}
-
-
 # Configuration of the AWS provider
 provider "aws" {
   region     = var.region
   access_key = var.access_key
   secret_key = var.secret_key
 
+}
+
+#Data source: Availablity Zones
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+# Data Source: aws region
+data "aws_regions" "current" {
+  current = true
+}
+
+# local variables
+
+locals {
+  team = "Dev"
 }
 
 
@@ -30,6 +40,7 @@ resource "aws_s3_bucket" "my_bucket" {
   tags = {
     Name        = "My first bucket"
     Environment = local.team
+    Region      = data.aws_region.current.names
   }
 }
 
