@@ -22,9 +22,7 @@ data "aws_availability_zones" "available" {
 }
 
 # Data Source: aws region
-data "aws_regions" "current" {
-  current = true
-}
+data "aws_region" "current" {}
 
 # local variables
 
@@ -40,7 +38,7 @@ resource "aws_s3_bucket" "my_bucket" {
   tags = {
     Name        = "My first bucket"
     Environment = local.team
-    Region      = data.aws_region.current.names
+    Region      = data.aws_region.current.name
   }
 }
 
