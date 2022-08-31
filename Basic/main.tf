@@ -1,13 +1,3 @@
-# provider: aws
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.27.0"
-    }
-  }
-}
-
 # Configuration of the AWS provider
 provider "aws" {
   region     = var.region
@@ -29,7 +19,6 @@ data "aws_region" "current" {}
 locals {
   team = "Dev"
 }
-
 
 # creating a S3 bucket
 resource "aws_s3_bucket" "my_bucket" {
