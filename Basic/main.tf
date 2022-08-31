@@ -48,4 +48,13 @@ resource "aws_instance" "web" {
   }
 }
 
+# generating a private key
+resource "tls_private_key" "my_key" {
+  algorithm = "RSA"
+}
+
+resource "local" "private_my_key" {
+  content = tls_private_key.my_key.private_key_pem
+  filename = "myAWSkey.pem"
+}
 
