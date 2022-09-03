@@ -21,40 +21,49 @@ locals {
 }
 
 # creating a S3 bucket
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = var.bucket_name
+# resource "aws_s3_bucket" "my_bucket" {
+#   bucket = var.bucket_name
 
-  tags = {
-    Name        = "My first bucket"
-    Environment = local.team
-    Region      = data.aws_region.current.name
-  }
-}
+#   tags = {
+#     Name        = "My first bucket"
+#     Environment = local.team
+#     Region      = data.aws_region.current.name
+#   }
+# }
 
 # creating a S3 bucket policy
-resource "aws_s3_bucket_acl" "my_bucket_policy" {
-  bucket = aws_s3_bucket.my_bucket.id
-  acl    = "private"
-}
+# resource "aws_s3_bucket_acl" "my_bucket_policy" {
+#   bucket = aws_s3_bucket.my_bucket.id
+#   acl    = "private"
+# }
 
 # ec2 instance
-resource "aws_instance" "web" {
-  ami           = var.instance_image # Amazone Machine Image
-  instance_type = "t1.micro"
+# resource "aws_instance" "web" {
+#   ami           = var.instance_image # Amazone Machine Image
+#   instance_type = "t1.micro"
 
-  tags = {
-    Name        = var.instance_name
-    Environment = local.team
-  }
-}
+#   tags = {
+#     Name        = var.instance_name
+#     Environment = local.team
+#   }
+# }
 
 # generating a private key
 resource "tls_private_key" "my_key" {
   algorithm = "RSA"
 }
 
-resource "local" "private_my_key" {
-  content = tls_private_key.my_key.private_key_pem
+resource "local_file" "private_my_key" {
+  content  = tls_private_key.my_key.private_key_pem
   filename = "myAWSkey.pem"
 }
 
+# generating a aws key pair
+resource "aws_key_pair" "my_key" {
+  key_name   = "myAWSkey"
+  public_key = tls_private_key.my_key.public_key_openssh
+
+  lifecycle {
+    ignore_changes = [public_key]
+  }
+}
