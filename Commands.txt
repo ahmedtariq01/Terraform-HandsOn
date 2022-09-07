@@ -3,6 +3,7 @@
 - terraform plan
 - terraform apply
 - terraform fmt
+- terraform fmt -recursive
 - terraform validate  
 - terraform state  
 - terraform state show
@@ -24,3 +25,4 @@
 - terraform output -json
 - $Env:TF_LOG = "TRACE" 
 - $Env:TF_LOG_PATH = "terraform_log.txt"
+- tree     
