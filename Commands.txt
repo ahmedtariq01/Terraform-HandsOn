@@ -1,0 +1,26 @@
+- terraform init
+- terraform init -upgrade
+- terraform plan
+- terraform apply
+- terraform fmt
+- terraform validate  
+- terraform state  
+- terraform state show
+- terraform state list
+- terraform state show resource
+- terraform state list resource
+- terraform destroy 
+- terraform workspace
+- terraform workspace show
+- terraform workspace list
+- terraform workspace select name
+- terraform workspace delete name
+- terraform import resource resourceID
+- terraform taint resource
+- terraform version
+- terraform providers
+- terraform -v
+- terraform -help
+- terraform output -json
+- $Env:TF_LOG = "TRACE" 
+- $Env:TF_LOG_PATH = "terraform_log.txt"
