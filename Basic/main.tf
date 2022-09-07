@@ -43,16 +43,6 @@ resource "aws_s3_bucket_acl" "my_bucket_policy" {
   acl    = "private"
 }
 
-# ec2 instance
-resource "aws_instance" "web" {
-  ami           = var.instance_image # Amazone Machine Image
-  instance_type = "t1.micro"
-
-  tags = {
-    Name        = var.instance_name
-    Environment = local.team
-  }
-}
 
 # generating a private key
 resource "tls_private_key" "my_key" {
@@ -74,3 +64,8 @@ resource "aws_key_pair" "my_key" {
   }
 }
 
+# adding module block for ec2 instance
+module "server" {
+  source = "./modules"
+  # passing variables to the module
+}
