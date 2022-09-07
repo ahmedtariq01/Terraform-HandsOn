@@ -3,6 +3,12 @@ provider "aws" {
   region     = var.region
   access_key = var.access_key
   secret_key = var.secret_key
+  default_tags {
+    tags = {
+      Environment = terraform.workspace
+      Provisoned  = "Terraform"
+    }
+  }
 
 }
 
@@ -21,32 +27,32 @@ locals {
 }
 
 # creating a S3 bucket
-# resource "aws_s3_bucket" "my_bucket" {
-#   bucket = var.bucket_name
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = var.bucket_name
 
-#   tags = {
-#     Name        = "My first bucket"
-#     Environment = local.team
-#     Region      = data.aws_region.current.name
-#   }
-# }
+  tags = {
+    Name        = "My first bucket"
+    Environment = local.team
+    Region      = data.aws_region.current.name
+  }
+}
 
 # creating a S3 bucket policy
-# resource "aws_s3_bucket_acl" "my_bucket_policy" {
-#   bucket = aws_s3_bucket.my_bucket.id
-#   acl    = "private"
-# }
+resource "aws_s3_bucket_acl" "my_bucket_policy" {
+  bucket = aws_s3_bucket.my_bucket.id
+  acl    = "private"
+}
 
 # ec2 instance
-# resource "aws_instance" "web" {
-#   ami           = var.instance_image # Amazone Machine Image
-#   instance_type = "t1.micro"
+resource "aws_instance" "web" {
+  ami           = var.instance_image # Amazone Machine Image
+  instance_type = "t1.micro"
 
-#   tags = {
-#     Name        = var.instance_name
-#     Environment = local.team
-#   }
-# }
+  tags = {
+    Name        = var.instance_name
+    Environment = local.team
+  }
+}
 
 # generating a private key
 resource "tls_private_key" "my_key" {
@@ -67,3 +73,4 @@ resource "aws_key_pair" "my_key" {
     ignore_changes = [public_key]
   }
 }
+
