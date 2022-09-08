@@ -1,10 +1,16 @@
 - terraform init
 - terraform init -upgrade
+- terraform init -migrate-state
 - terraform plan
+- terraform plan -out myplan
+- terraform show myplan
+- terraform output -json
 - terraform apply
+- terraform apply -auto-approve
 - terraform fmt
 - terraform fmt -recursive
-- terraform validate  
+- terraform validate 
+- terraform validate -json 
 - terraform state  
 - terraform state show
 - terraform state list
@@ -22,7 +28,7 @@
 - terraform providers
 - terraform -v
 - terraform -help
-- terraform output -json
+- terraform console module.name
 - $Env:TF_LOG = "TRACE" 
 - $Env:TF_LOG_PATH = "terraform_log.txt"
 - tree     
