@@ -11,12 +11,19 @@ terraform {
       version = "~> 3.1.0"
     }
     local = {
-      source = "hashicorp/local"
+      source  = "hashicorp/local"
       version = "~> 2.2.3"
     }
     tls = {
-      source = "hashicorp/tls"
+      source  = "hashicorp/tls"
       version = "~> 4.0.2"
     }
+  }
+}
+
+#terraform state path
+terraform {
+  backend "local" {
+    path = "terraform_state/terraform.tfstate"
   }
 }
