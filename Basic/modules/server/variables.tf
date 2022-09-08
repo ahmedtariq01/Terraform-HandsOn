@@ -16,12 +16,6 @@ variable "secret_key" {
   default     = "secret_key"
 }
 
-variable "bucket_name" {
-  description = "Bucket Name"
-  type        = string
-  default     = "bucket_name"
-}
-
 variable "instance_image" {
   description = "Ubuntu, 22.04 LTS"
   type        = string

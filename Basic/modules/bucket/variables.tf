@@ -21,15 +21,3 @@ variable "bucket_name" {
   type        = string
   default     = "bucket_name"
 }
-
-variable "instance_image" {
-  description = "Ubuntu, 22.04 LTS"
-  type        = string
-  default     = "ami_id"
-}
-
-variable "instance_name" {
-  description = "Instance Name"
-  type        = string
-  default     = "instance_name"
-}
