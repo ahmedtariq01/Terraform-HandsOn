@@ -20,10 +20,3 @@ terraform {
     }
   }
 }
-
-#terraform state path
-terraform {
-  backend "local" {
-    path = "terraform_state/terraform.tfstate"
-  }
-}
