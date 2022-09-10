@@ -14,3 +14,15 @@ terraform {
 #     region = "us-east-1"  #region
 #   }
 # }
+
+# terraform state in terraform cloud
+# terraform {
+#   backend "remote" {
+#     hostname = "app.terraform.io"
+#     organization = "terraform_handsOn"
+
+#     workspaces {
+#       name = "terraform_handsOn_workspace"
+#     }
+#   }
+# }
