@@ -1,3 +1,4 @@
+- terraform login
 - terraform init
 - terraform init -upgrade
 - terraform init -reconfigure
@@ -30,6 +31,9 @@
 - terraform taint resource
 - terraform version
 - terraform providers
+- terraform refresh
+- terraform refresh-only
+- terraform apply-refresh-only
 - terraform -v
 - terraform -help
 - terraform console module.name
