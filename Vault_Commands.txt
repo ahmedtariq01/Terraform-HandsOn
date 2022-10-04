@@ -1,0 +1,4 @@
+- vault status
+- vault operator init  
+- vault operator unseal
+
