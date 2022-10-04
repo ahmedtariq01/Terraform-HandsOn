@@ -1,4 +1,6 @@
 - vault status
-- vault operator init  
+- vault operator init
+- vault login token  
 - vault operator unseal
-
+- vault secrets list
+- sudo systemctl restart vault
